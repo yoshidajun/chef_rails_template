@@ -3,24 +3,28 @@
 class TopController < ApplicationController
 
   def index
-    Rails.logger.info '----- index'
+    log 'index'
     act_sleep
   end
 
   def index2
-    Rails.logger.info '----- index2'
+    log 'index2'
     act_sleep
   end
 
   private
 
+  def log(message)
+    Rails.logger.info "----- #{message}: pid #{$$} - #{request.path}"
+  end
+
   def act_sleep
-    count = rand(10)
-    puts "---------- sleep #{count} times"
+    count = rand(10) + 1
+    log "sleep #{count} times"
     count.times do |i|
-      Rails.logger.info "---------- pid #{$$}: sleep"
+      log "sleep"
       sleep(3)
-      Rails.logger.info "---------- pid #{$$}: wake up!"
+      log "wake up!"
     end
   end
 
