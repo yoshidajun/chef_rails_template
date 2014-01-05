@@ -42,6 +42,13 @@ namespace :setup do
 end
 after "deploy:setup", "setup:fix_permissions"
 
+namespace :deploy do
+  task :restart, :roles => :app do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end
+
+=begin
 # Unicorn用に起動/停止タスクを変更
 namespace :deploy do
   task :start, :roles => :app do
@@ -56,3 +63,4 @@ namespace :deploy do
     run "kill -s QUIT `cat /tmp/unicorn_#{application}.pid`"
   end
 end
+=end
