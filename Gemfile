@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'rake', '10.0.3'
 gem 'mysql2'
 
 group :assets do
