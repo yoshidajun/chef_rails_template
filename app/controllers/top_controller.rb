@@ -3,9 +3,12 @@
 class TopController < ApplicationController
 
   def index
-    Rails.logger.info '---------- sleep'
-    sleep(10)
-    Rails.logger.info '---------- wake up!'
+    count = rand(10)
+    count.times do |i|
+      Rails.logger.info '---------- pid #{$$}: sleep'
+      sleep(3)
+      Rails.logger.info '---------- pid #{$$}: wake up!'
+    end
   end
 
 end
