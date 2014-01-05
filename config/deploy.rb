@@ -7,7 +7,8 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 
 # rvm
-set :rvm_ruby_string, '1.9.3'
+# set :rvm_ruby_string, '1.9.3'
+set :rvm_ruby_string, 'ruby-1.9.3-p484'
 set :rvm_type, :system
 
 # リポジトリ
