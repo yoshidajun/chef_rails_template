@@ -5,17 +5,21 @@ class TopController < ApplicationController
   def index
     log 'index'
     act_sleep
+    LogBox::flush
   end
 
   def index2
     log 'index2'
     act_sleep
+    LogBox::flush
   end
 
   private
 
   def log(message)
-    Rails.logger.info "----- #{message}: pid #{$$} - #{request.path}"
+    msg = "----- #{message}: pid #{$$} - #{request.path}"
+    Rails.logger.info msg
+    LogBox::log msg
   end
 
   def act_sleep
